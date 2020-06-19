@@ -29,7 +29,11 @@ const router = (req, res) => {
             let female = _.filter(data, user => user.gender === 'female');
             let male_summary = summary_generator(male);
             let female_summary = summary_generator(female);
+
+            // rendering this api with ejs template engine.
+            // comment res.rendor if you want json data only and uncomment res.json 
             res.render('summary', {male_summary: male_summary, female_summary: female_summary})
+            // res.json({male_summary, female_summary});
         })
         .catch(err => {
             console.log('err---->', err);
